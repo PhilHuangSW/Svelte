@@ -6,6 +6,8 @@
 	let jobTitle = "Software Engineer";
 	let description = "lorem ipsum";
 	let url = "";
+	let formState = "";
+	let contactCards = [];
 
 	$: upperCaseName = name.toUpperCase();
 
@@ -29,6 +31,28 @@
 		const enteredValue = event.target.value;
 		name = enteredValue;
 	}
+
+	function showCard() {
+		if (
+			name.trim().length === 0 ||
+			jobTitle.trim().length === 0 ||
+			description.trim().length === 0 ||
+			url.trim().length === 0
+		) {
+			formState = "invalid";
+		} else {
+			formState = "good";
+			contactCards = [
+				...contactCards,
+				{
+					name: name,
+					jobTitle: jobTitle,
+					description: description,
+					url: url,
+				},
+			];
+		}
+	}
 </script>
 
 <h1>Hello {upperCaseName}! My age is {age}.</h1>
@@ -45,16 +69,30 @@
 </div>
 
 <div>
-	Description: <textarea bind:value={description} cols="50" rows="3" />
+	Description: <input type="text" bind:value={description} />
 </div>
 
 <div>
 	Img Src: <input type="text" bind:value={url} />
 </div>
 
-<!-- <input type="text" value={name} on:input={nameInput} /> -->
+<button on:click={showCard}>Create Card</button>
 
-<ContactCard {name} {jobTitle} {description} {url} />
+<!-- <input type="text" value={name} on:input={nameInput} /> -->
+{#if formState === "good"}
+	<p>Created new card!</p>
+{:else if formState === "invalid"}
+	<p>Invalid form.</p>
+{/if}
+
+{#each contactCards as card}
+	<ContactCard
+		name={card.name}
+		jobTitle={card.jobTitle}
+		description={card.description}
+		url={card.url}
+	/>
+{/each}
 
 <style>
 	h1 {
