@@ -1,10 +1,10 @@
 <script>
 	import ContactCard from "./ContactCard.svelte";
 
-	let name = "Phil";
+	let name = "";
 	let age = 32;
-	let jobTitle = "Software Engineer";
-	let description = "lorem ipsum";
+	let jobTitle = "";
+	let description = "";
 	let url = "";
 	let formState = "";
 	let contactCards = [];
@@ -61,19 +61,23 @@
 <button on:click={changeName}>Change Name</button>
 
 <div>
-	Name: <input type="text" bind:value={name} />
+	Name: <input type="text" placeholder="name" bind:value={name} />
 </div>
 
 <div>
-	Job Title: <input type="text" bind:value={jobTitle} />
+	Job Title: <input type="text" placeholder="job title" bind:value={jobTitle} />
 </div>
 
 <div>
-	Description: <input type="text" bind:value={description} />
+	Description: <input
+		type="text"
+		placeholder="description"
+		bind:value={description}
+	/>
 </div>
 
 <div>
-	Img Src: <input type="text" bind:value={url} />
+	Img Src: <input type="text" placeholder="url" bind:value={url} />
 </div>
 
 <button on:click={showCard}>Create Card</button>
@@ -85,13 +89,16 @@
 	<p>Invalid form.</p>
 {/if}
 
-{#each contactCards as card}
+{#each contactCards as card, index}
+	<h2># {index + 1}</h2>
 	<ContactCard
 		name={card.name}
 		jobTitle={card.jobTitle}
 		description={card.description}
 		url={card.url}
 	/>
+{:else}
+	<p>Please start adding some contacts!</p>
 {/each}
 
 <style>
