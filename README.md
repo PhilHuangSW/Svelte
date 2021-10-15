@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
 ---
@@ -104,7 +103,3 @@ Then, from within your project folder:
 npm run build
 surge public my-project.surge.sh
 ```
-=======
-# Svelte
-Repo for all things Svelte
->>>>>>> a1cf8c8319c44b3d878dbf2ea2d28c45e05d904c
