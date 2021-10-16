@@ -1,7 +1,7 @@
 import App from './App.svelte';
-import Assignment from './Assignment.svelte';
-import Passwords from './Passwords.svelte';
-import Product from './Product.svelte';
+// import Assignment from './Assignment.svelte';
+// import Passwords from './Passwords.svelte';
+// import Product from './Product.svelte';
 
 const app = new App({
 	target: document.body,
