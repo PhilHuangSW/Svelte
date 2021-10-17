@@ -1,5 +1,5 @@
 <script>
-  import CustomInput from "./CustomInput.svelte";
+  import CustomInput from "../CustomInput.svelte";
   import Toggle from "./Toggle.svelte";
   let val = "";
   let selectedOption = 1;
