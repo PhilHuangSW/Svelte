@@ -5,7 +5,7 @@
   import { fade, fly, slide, scale } from "svelte/transition";
   import { flip } from "svelte/animate";
 
-  import Spring from "./Spring.svelte";
+  import Spring from "../Spring.svelte";
 
   let boxInput;
   let boxes = [];
